@@ -23,3 +23,23 @@ git clone https://github.com/soumiyachacko-dev/myshop.git
 cd myshop
 pip install -r requirements.txt
 python manage.py runserver
+
+# Django Online Shopping Website
+
+## Home Page
+
+![Home](screenshots/home.png)
+
+## Product Detail
+
+![Product](screenshots/product_detail.png)
+
+## Shopping Cart
+
+![Cart](screenshots/cart.png)
+
+## My Orders
+![Product](screenshots/my_orders.png)
+
+## Checkout
+![Product](screenshots/checkout.png)
