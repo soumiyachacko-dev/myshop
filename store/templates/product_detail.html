@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-6xl mx-auto px-4 mt-10">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+        <!-- Product Image -->
+        <div class="bg-gray-50 p-5 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+
+    <div class="overflow-hidden rounded-xl">
+        <img src="{{ product.image.url }}"
+             alt="{{ product.name }}"
+             class="w-full h-96 object-cover transform hover:scale-105 transition duration-300">
+    </div>
+
+</div>
+
+        <!-- Product Details -->
+        <div class="flex flex-col gap-4">
+
+            <h2 class="text-3xl font-bold text-gray-900">
+                {{ product.name }}
+            </h2>
+
+            <h4 class="text-2xl font-semibold text-orange-500">
+                ₹{{ product.price }}
+            </h4>
+
+            <p class="text-gray-600 leading-relaxed">
+                {{ product.description }}
+            </p>
+
+            <!-- Add to Cart Button -->
+            <a href="{% url 'add_to_cart' product.id %}"
+               class="w-fit bg-gray-400 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-gray-900 hover:shadow-md transition duration-200">
+               Add to Cart
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

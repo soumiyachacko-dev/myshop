@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MyShop{% endblock %}</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#904d00",
+                        secondary: "#865224",
+                        background: "#ffffff",
+                        surface: "#ffffff",
+                        error: "#ba1a1a",
+                    },
+                    fontFamily: {
+                        body: ["Inter"],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Optional extra CSS -->
+    {% block extra_css %}{% endblock %}
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400;
+        }
+
+    .errorlist li {
+        color: #dc2626; /* Tailwind red-600 */
+        font-size: 0.875rem; /* text-sm */
+        margin-top: 0.25rem; /* mt-1 */
+    }
+</style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-background text-gray-800 font-body">
+
+    <!-- Navbar -->
+    {% include 'components/navbar.html' %}
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
+
+    <!-- Optional JS -->
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

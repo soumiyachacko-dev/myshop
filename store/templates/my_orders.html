@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+<div class="min-h-[70vh] px-4 py-8">
+
+    <!-- Page Title -->
+    <div class="mb-6 text-center">
+        <h3 class="text-2xl font-bold text-gray-900">My Orders</h3>
+        <hr class="mt-2 border-gray-300 w-24 mx-auto">
+    </div>
+
+    {% if orders %}
+    <div class="space-y-6">
+
+        {% for order in orders %}
+        <!-- Order Card -->
+        <div class="bg-white shadow-lg rounded-2xl p-6 border border-gray-100 flex flex-col md:flex-row md:items-center md:justify-between">
+
+            <!-- Order Info -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:gap-6">
+                <span class="font-semibold text-gray-900">#{{ order.id }}</span>
+                <span class="text-gray-500 mt-1 sm:mt-0">{{ order.created_at|date:"M d, Y" }}</span>
+                <span class="text-center font-medium text-gray-700 mt-1 sm:mt-0">₹{{ order.total_price }}</span>
+                <span class="mt-1 sm:mt-0">
+                    <span class="px-3 py-1 rounded-full bg-orange-400 text-white text-sm font-semibold">Placed</span>
+                </span>
+            </div>
+
+            <!-- Action Button -->
+            <div class="mt-4 md:mt-0">
+                <a href="{% url 'order_detail' order.id %}"
+                   class="inline-block bg-orange-400 text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-orange-500 shadow-md transition duration-200">
+                   View Details
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% else %}
+    <!-- Empty State -->
+    <div class="text-center mt-16">
+        <h5 class="text-gray-900 text-lg font-semibold mb-2">No orders yet</h5>
+        <p class="text-gray-500 mb-4">Start shopping to place your first order.</p>
+        <a href="{% url 'home' %}"
+           class="inline-block bg-orange-400 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-orange-500 shadow-md transition duration-200">
+           Shop Now
+        </a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

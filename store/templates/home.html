@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+<h2 class="text-2xl font-bold mb-6 mt-10">Latest Products</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+    {% for product in products %}
+    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300">
+
+        <!-- Product Image -->
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover">
+
+        <!-- Product Info -->
+        <div class="p-4 flex flex-col flex-grow">
+
+            <h3 class="text-lg font-semibold mb-2">{{ product.name }}</h3>
+            <p class="text-gray-500 mb-4">₹{{ product.price }}</p>
+
+            <!-- Action Buttons -->
+            <div class="mt-auto flex gap-2">
+                <!-- View Details: Orange -->
+                <a href="{% url 'product_detail' product.id %}"
+                   class="flex bg-orange-400 text-white text-sm font-semibold py-2 px-3 rounded-xl hover:bg-orange-500 hover:shadow-md text-center transition duration-200">
+                   View Details
+                </a>
+                <!-- Add to Cart: Dark Gray -->
+                <a href="{% url 'add_to_cart' product.id %}"
+                   class="flex bg-gray-400 text-white text-sm font-semibold py-2 px-3 rounded-xl hover:bg-gray-900 hover:shadow-md text-center transition duration-200">
+                   Add to Cart
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

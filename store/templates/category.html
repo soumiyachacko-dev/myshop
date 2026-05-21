@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto px-4 mt-10">
+
+    <!-- Title -->
+    <h2 class="text-2xl font-bold mb-8">
+        Category: <span class="text-orange-500">{{ category.name }}</span>
+    </h2>
+
+    {% if products %}
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+
+        {% for product in products %}
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 p-3">
+
+            <!-- Image -->
+            <div class="overflow-hidden rounded-xl">
+                <img src="{{ product.image.url }}"
+                     alt="{{ product.name }}"
+                     class="w-full h-48 object-cover hover:scale-105 transition duration-300">
+            </div>
+
+            <!-- Info -->
+            <div class="p-3 flex flex-col">
+
+                <h4 class="text-base font-semibold text-gray-800 mb-1">
+                    {{ product.name }}
+                </h4>
+
+                <p class="text-gray-500 text-sm mb-3">
+                    ₹{{ product.price }}
+                </p>
+
+                <!-- Small Button -->
+                <a href="{% url 'product_detail' product.id %}"
+                   class="self-start bg-orange-400 text-white text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">
+                   View Details
+                </a>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <!-- Empty State -->
+    <div class="text-center mt-16">
+        <div class="text-5xl mb-4">📦</div>
+        <p class="text-gray-500 text-lg">
+            No products found in this category.
+        </p>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

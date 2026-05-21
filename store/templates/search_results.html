@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto px-4 mt-12">
+
+    <!-- Title -->
+    <div class="mb-10 text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900">
+            Search Results
+        </h2>
+        <p class="text-gray-500 mt-2">
+            Showing results for
+            <span class="text-orange-500 font-semibold">"{{ query }}"</span>
+        </p>
+    </div>
+
+    <!-- Categories -->
+    {% if categories %}
+    <div class="mb-12">
+        <h3 class="text-xl font-semibold mb-5 text-gray-800 ">
+            Categories
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {% for category in categories %}
+            <a href="{% url 'category' category.id %}"
+               class="group bg-white rounded-2xl shadow-sm hover:shadow-xl p-6 text-center transition duration-300 border border-gray-100 hover:border-orange-200">
+
+                <div class="text-lg font-semibold text-gray-800 group-hover:text-orange-500 transition">
+                    {{ category.name }}
+                </div>
+
+
+
+            </a>
+            {% empty %}
+                <p class="text-gray-500">No categories found.</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Products -->
+    {% if products %}
+    <div>
+        <h3 class="text-xl font-semibold mb-6 text-gray-800  ">
+            Products
+        </h3>
+
+       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+
+    {% for product in products %}
+    <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 p-3">
+
+        <!-- Image -->
+        <div class="overflow-hidden rounded-xl">
+            <img src="{{ product.image.url }}"
+                 alt="{{ product.name }}"
+                 class="w-full h-48 object-cover hover:scale-105 transition duration-300">
+        </div>
+
+        <!-- Info -->
+        <div class="p-3 flex flex-col">
+
+            <h4 class="text-base font-semibold text-gray-800 mb-1">
+                {{ product.name }}
+            </h4>
+
+            <p class="text-gray-500 text-sm mb-3">
+                ₹{{ product.price }}
+            </p>
+
+            <!-- Small Button -->
+            <a href="{% url 'product_detail' product.id %}"
+               class="self-start bg-orange-400 text-white text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">
+               View Details
+            </a>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+    {% endif %}
+
+    <!-- No Results -->
+    {% if not products and not categories %}
+    <div class="text-center mt-16">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-xl font-semibold text-gray-700">
+            No results found
+        </h3>
+        <p class="text-gray-500 mt-2">
+            Try searching with different keywords.
+        </p>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

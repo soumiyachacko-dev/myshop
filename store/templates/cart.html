@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-6xl mx-auto px-4 mt-10">
+
+    <!-- Title -->
+    <h2 class="text-2xl font-bold mb-6">Your Cart</h2>
+
+    <!-- Table -->
+    <div class="overflow-x-auto bg-white rounded-xl shadow-md">
+        <table class="w-full text-left border-collapse">
+
+            <!-- Header -->
+            <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+                <tr>
+                    <th class="p-4">Product</th>
+                    <th class="p-4">Quantity</th>
+                    <th class="p-4">Price</th>
+                    <th class="p-4">Subtotal</th>
+                    <th class="p-4">Actions</th>
+                </tr>
+            </thead>
+
+            <!-- Body -->
+            <tbody class="text-gray-700">
+
+                {% for item in items %}
+                <tr class="border-t">
+
+                    <!-- Product -->
+                    <td class="p-4 font-medium">
+                        {{ item.product.name }}
+                    </td>
+
+                    <!-- Quantity Controls -->
+                    <td class="p-4">
+                        <div class="flex items-center gap-2">
+                            <a href="{% url 'decrease_qty' item.product.id %}"
+                               class="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300">-</a>
+
+                            <span class="px-2">{{ item.qty }}</span>
+
+                            <a href="{% url 'increase_qty' item.product.id %}"
+                               class="bg-gray-200 px-2 py-1 rounded hover:bg-gray-300">+</a>
+                        </div>
+                    </td>
+
+                    <!-- Price -->
+                    <td class="p-4">
+                        ₹{{ item.product.price }}
+                    </td>
+
+                    <!-- Subtotal -->
+                    <td class="p-4 font-semibold">
+                        ₹{{ item.subtotal }}
+                    </td>
+
+                    <!-- Remove -->
+                    <td class="p-4">
+                        <a href="{% url 'remove_from_cart' item.product.id %}"
+                           class="bg-orange-400 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-orange-500 transition">
+                           Remove
+                        </a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Total + Actions -->
+    <div class="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
+
+        <!-- Total -->
+        <h4 class="text-xl font-semibold text-gray-800">
+            Total: ₹{{ total }}
+        </h4>
+
+        <!-- Buttons -->
+        <div class="flex gap-3">
+
+            <a href="{% url 'checkout' %}"
+               class="bg-orange-400 text-white px-5 py-2 rounded-xl hover:bg-orange-500 transition">
+               Proceed to Checkout
+            </a>
+
+            <a href="#"
+               class="bg-gray-400 text-white px-5 py-2 rounded-xl hover:bg-gray-900 transition">
+               Pay with Card
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
