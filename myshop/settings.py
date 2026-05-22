@@ -118,13 +118,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/'
+# Static files
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files (important)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -133,10 +138,3 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'djdjxv0g2',
-    'API_KEY': '438544186114112',
-    'API_SECRET': 'jWXue5xD7s3tapi3r3n_hPj-7Zc',
-}
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
