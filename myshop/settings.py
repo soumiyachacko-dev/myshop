@@ -123,13 +123,14 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/'
-# INSTALLED_APPS += [
-#     'cloudinary',
-#     'cloudinary_storage',
-# ]
-#
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'djdjxv0g2',
-#     'API_KEY': '438544186114112',
-#     'API_SECRET': 'YOUR_SECRET',
-# }
+INSTALLED_APPS += [
+    'cloudinary',
+    'cloudinary_storage',
+]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'djdjxv0g2',
+    'API_KEY': '438544186114112',
+    'API_SECRET': 'jWXue5xD7s3tapi3r3n_hPj-7Zc',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
