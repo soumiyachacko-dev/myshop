@@ -133,12 +133,3 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '438544186114112',
     'API_SECRET': 'YOUR_SECRET',
 }
-
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
