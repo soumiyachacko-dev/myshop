@@ -56,7 +56,7 @@
     </div>
 
     <!-- Right: Search + Cart + Orders + Auth -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 shrink-0">
 
       <!-- Search Bar (Desktop) -->
       <form method="GET" action="{% url 'search' %}" class="relative hidden md:block">
@@ -74,7 +74,7 @@
       </a>
 
       <!-- My Orders -->
-      <a href="{% url 'my_orders' %}" class="flex items-center gap-1 text-gray-100 hover:text-gray-900 text-lg">
+<a href="{% url 'my_orders' %}" class="hidden md:flex items-center gap-1 text-gray-100 hover:text-gray-900 text-lg">
         <span class="material-symbols-outlined text-xl">inventory_2</span>
         <span class="hidden sm:inline">My Orders</span>
       </a>
@@ -88,16 +88,17 @@
           Logout
         </a>
       {% else %}
-        <a href="{% url 'login' %}" class="flex bg-gray-500 text-white text-sm font-semibold py-2 px-3 rounded-xl hover:bg-gray-900 hover:shadow-md text-center transition duration-200">Login</a>
-        <a href="{% url 'register' %}" class="bg-orange-400 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-orange-500">
+        <a href="{% url 'login' %}" class="hidden md:flex bg-gray-500 text-white text-sm font-semibold py-2 px-3 rounded-xl hover:bg-gray-900 hover:shadow-md text-center transition duration-200">Login</a>
+<a href="{% url 'register' %}" class="hidden md:block bg-orange-400 text-white text-xs px-3 py-1.5 rounded-lg hover:bg-orange-500">
           Register
         </a>
       {% endif %}
 
       <!-- Mobile Hamburger -->
-      <button id="mobile-menu-button" class="md:hidden p-2 text-gray-600 hover:text-gray-900">
-        <span class="material-symbols-outlined text-2xl">menu</span>
-      </button>
+     <button id="mobile-menu-button"
+        class="md:hidden p-2 text-black bg-white rounded">
+    <span class="material-symbols-outlined text-2xl">menu</span>
+</button>
 
     </div>
 
@@ -119,6 +120,9 @@
 </div>
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden px-4 pb-3">
+      <p class="bg-yellow-200 p-2">
+    Mobile Menu Opened
+</p>
     <div class="flex flex-col gap-2">
 
 
