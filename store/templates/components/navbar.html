@@ -119,17 +119,11 @@
 </div>
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden px-4 pb-3">
-      <p class="bg-yellow-200 p-2">
-    Mobile Menu Opened
-</p>
-    <div class="flex flex-col gap-2">
-
-
+      <div class="flex flex-col gap-2">
     <!-- Categories -->
 <div class="font-semibold text-gray-800 border-t border-gray-200 pt-2 mb-2">
   Categories
 </div>
-
 {% for item in menu_data %}
       <div class="border-t border-gray-200 pt-2">
         <a href="{% url 'category' item.category.id %}" class="font-semibold text-gray-800 hover:text-orange-500">
