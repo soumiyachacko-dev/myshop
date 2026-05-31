@@ -129,7 +129,7 @@
         <a href="{% url 'category' item.category.id %}" class="font-semibold text-gray-800 hover:text-orange-500">
           {{ item.category.name }}
         </a>
-        <div class="ml-4 mt-1">
+        <div class="ml-4 mt-1 border-t border-gray-20" >
           {% for product in item.products %}
             <a href="{% url 'product_detail' product.id %}" class="block text-sm text-gray-600 hover:text-black">
               {{ product.name }}
